@@ -3,7 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddHttpClient("DogAPI", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5221/");
+    #if DEBUG
+        client.BaseAddress = new Uri("http://localhost:5221/");
+    #else
+        client.BaseAddress = new Uri("https://dogapi.azurewebsites.net/api/dogs/");
+    #endif
 });
 builder.Services.AddRazorPages();
 
