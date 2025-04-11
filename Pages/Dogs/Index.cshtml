@@ -1,0 +1,64 @@
+@page
+@model DogsIndexModel
+@{
+    ViewData["Title"] = "View All Dogs";
+}
+
+<h1>All Dogs</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dog in Model.Dogs)
+        {
+            <tr>
+                <td>@dog.Name</td>
+                <td>@dog.Breed</td>
+                <td>@dog.Age</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="openUpdateModal(@dog.Id)">Update</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteDog(@dog.Id)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Update Modal -->
+<div id="updateModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Dog</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateForm">
+                    <input type="hidden" id="dogId" />
+                    <div class="mb-3">
+                        <label for="dogName" class="form-label">Name</label>
+                        <input type="text" id="dogName" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="dogBreed" class="form-label">Breed</label>
+                        <input type="text" id="dogBreed" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="dogAge" class="form-label">Age</label>
+                        <input type="number" id="dogAge" class="form-control" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="updateDog()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\DogAPI\DogAPI.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Dog_App</RootNamespace>
+    <UserSecretsId>205f2b85-6af1-4657-953c-99801a178ee7</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
